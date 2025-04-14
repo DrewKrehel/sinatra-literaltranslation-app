@@ -1,9 +1,14 @@
 require "sinatra"
 require "sinatra/reloader"
+require "better_errors"
 
 get("/") do
-  "
-  <h1>Welcome to your Sinatra App!</h1>
-  <p>Define some routes in app.rb</p>
-  "
+  erb(:home)
+end
+
+get("/translation") do
+  @trans_input = params.fetch("input")
+  @num_sides = params.fetch("sides")
+
+  erb(:translation)
 end
