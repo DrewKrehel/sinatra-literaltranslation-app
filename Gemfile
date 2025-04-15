@@ -14,6 +14,7 @@ gem "sinatra-activerecord"
 
 gem "http"
 gem "dotenv"
+gem "ruby-openai"
 
 group :development do
   gem "better_errors"
