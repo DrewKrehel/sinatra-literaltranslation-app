@@ -38,14 +38,11 @@ api_response = client.chat(
   }
 )
 
-#pp api_response
+#api_response
 parsed_choice = api_response.fetch("choices")
 choice_result = parsed_choice.at(0)
 parsed_message = choice_result.fetch("message")
 first_message = parsed_message.fetch("content")
 
 #Program Start
-puts "Hello! How can I help you today?"
-puts 50*"-"
-user_input = gets.chomp
-message_list << @trans_input
+message_list.push({ "role" => "user", "content" => @trans_input })
