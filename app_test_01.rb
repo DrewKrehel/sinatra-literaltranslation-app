@@ -4,16 +4,6 @@ require "better_errors"
 require "openai"
 require "dotenv/load"
 
-get("/") do
-  erb(:home)
-end
-
-get("/translation") do
-  @input_trans = params.fetch("input")
-  @num_sides = params.fetch("sides")
-
-  erb(:translation)
-end
 
 # OpenAI Resource 
 client = OpenAI::Client.new(access_token: ENV.fetch("OPEN_AI_KEY"))
@@ -25,7 +15,7 @@ message_list = [
   },
   {
     "role" => "user",
-    "content" => @input_trans
+    "content" => "I like this bike. I enjoy riding it in the park near where I work."
   }
 ]
 
@@ -36,5 +26,5 @@ api_response = client.chat(
     }
   )
 
-#api_response
-@output_trans = api_response.fetch("choices").at(0).fetch("message").fetch("content")
+pp api_response
+# pp output_trans = api_response.fetch("choices").at(0).fetch("message").fetch("content")
