@@ -25,8 +25,10 @@ message_list = [
   },
 ]
 
-while @input_trans != ""
-  message_list << { "role" => "user", "content" => "@input_trans" }
+case @input_trans 
+when "" then "Nothing"
+else
+  message_list << { "role" => "user", "content" => @input_trans }
   api_response = client.chat(
       parameters: {
         model: "gpt-3.5-turbo",
