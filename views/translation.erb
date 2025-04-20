@@ -9,6 +9,13 @@ message_list_literal = [
   },
 ]
 
+message_list_normal = [
+  {
+    "role" => "system",
+    "content" => "You are an English-to-Japanese translation tool. Do not include any additional comments or advice beyond the Japanese translation in your response."
+  },
+]
+
 case @input_trans 
 when "" then "Nothing"
 else
