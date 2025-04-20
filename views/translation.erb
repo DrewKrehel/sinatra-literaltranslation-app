@@ -16,6 +16,20 @@ message_list_normal = [
   },
 ]
 
+message_list_no_kanji = [
+  {
+    "role" => "system",
+    "content" => "You are an English-to-Japanese translation tool. Do not use any Kanji in the translation, only Hiragana and Katakana. Do not include any additional comments, restate the user input, or give advice beyond the Japanese translation in your response."
+  },
+]
+
+message_list_english_alpha = [
+  {
+    "role" => "system",
+    "content" => "You are an English-to-Japanese translation tool. Do not use any Japanese characters in the translation; spell each Japanese word only using the English alphabet. Do not include any additional comments, restate the user input, or give advice beyond the translation in your response."
+  },
+]
+
 case @input_trans 
 when "" then "Nothing"
 else
@@ -44,7 +58,39 @@ else
 
   #api_response
   @kanji_output = api_response.fetch("choices").at(0).fetch("message").fetch("content")
-end %>
+end 
+
+case @input_trans 
+when "" then "Nothing"
+else
+  message_list_no_kanji << { "role" => "user", "content" => @input_trans }
+  api_response = client.chat(
+      parameters: {
+        model: "gpt-3.5-turbo",
+        messages: message_list_no_kanji
+      }
+    )
+
+  #api_response
+  @phonetic_output = api_response.fetch("choices").at(0).fetch("message").fetch("content")
+end
+
+case @input_trans 
+when "" then "Nothing"
+else
+  message_list_english_alpha << { "role" => "user", "content" => @input_trans }
+  api_response = client.chat(
+      parameters: {
+        model: "gpt-3.5-turbo",
+        messages: message_list_english_alpha
+      }
+    )
+
+  #api_response
+  @eng_alpha_output = api_response.fetch("choices").at(0).fetch("message").fetch("content")
+end
+
+%>
 
 
 
@@ -57,17 +103,24 @@ end %>
   </dd>
 
   <dt>
-    <strong>Written phonetically</strong>
+    <strong>Normal translation</strong>
+  </dt>
+  <dd>
+    <%= @kanji_output %>
+  </dd>
+
+  <dt>
+    <strong>Only Japanese phonetic characters</strong>
   </dt>
   <dd>
     <%= @phonetic_output %>
   </dd>
 
   <dt>
-    <strong>Written with Kanji</strong>
+    <strong>Only English phonetic characters</strong>
   </dt>
   <dd>
-    <%= @kanji_output %>
+    <%= @eng_alpha_output %>
   </dd>
 
   <dt>
