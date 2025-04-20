@@ -1,4 +1,4 @@
-<h1>Japanese gramar... but in English</h1>
+<h1>Japanese grammar... but in English</h1>
 
 <% client = OpenAI::Client.new(access_token: ENV.fetch("OPEN_AI_KEY"))
 
@@ -40,8 +40,6 @@ else
         messages: message_list_literal
       }
     )
-
-  #api_response
   @output_trans = api_response.fetch("choices").at(0).fetch("message").fetch("content")
 end 
 
@@ -55,8 +53,6 @@ else
         messages: message_list_normal
       }
     )
-
-  #api_response
   @kanji_output = api_response.fetch("choices").at(0).fetch("message").fetch("content")
 end 
 
@@ -70,8 +66,6 @@ else
         messages: message_list_no_kanji
       }
     )
-
-  #api_response
   @phonetic_output = api_response.fetch("choices").at(0).fetch("message").fetch("content")
 end
 
@@ -85,8 +79,6 @@ else
         messages: message_list_english_alpha
       }
     )
-
-  #api_response
   @eng_alpha_output = api_response.fetch("choices").at(0).fetch("message").fetch("content")
 end
 
