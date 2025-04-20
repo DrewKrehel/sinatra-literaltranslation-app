@@ -29,7 +29,24 @@ else
 
   #api_response
   @output_trans = api_response.fetch("choices").at(0).fetch("message").fetch("content")
+end 
+
+case @input_trans 
+when "" then "Nothing"
+else
+  message_list_normal << { "role" => "user", "content" => @input_trans }
+  api_response = client.chat(
+      parameters: {
+        model: "gpt-3.5-turbo",
+        messages: message_list_normal
+      }
+    )
+
+  #api_response
+  @kanji_output = api_response.fetch("choices").at(0).fetch("message").fetch("content")
 end %>
+
+
 
 <dl>
   <dt>
