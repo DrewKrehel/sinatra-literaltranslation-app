@@ -37,6 +37,7 @@ else
   api_response = client.chat(
       parameters: {
         model: "gpt-3.5-turbo",
+        temperature: 0.5,
         messages: message_list_literal
       }
     )
@@ -50,6 +51,7 @@ else
   api_response = client.chat(
       parameters: {
         model: "gpt-3.5-turbo",
+        temperature: 0.5,
         messages: message_list_normal
       }
     )
@@ -63,6 +65,7 @@ else
   api_response = client.chat(
       parameters: {
         model: "gpt-3.5-turbo",
+        temperature: 0.5,
         messages: message_list_no_kanji
       }
     )
@@ -76,6 +79,7 @@ else
   api_response = client.chat(
       parameters: {
         model: "gpt-3.5-turbo",
+        temperature: 0.5,
         messages: message_list_english_alpha
       }
     )
