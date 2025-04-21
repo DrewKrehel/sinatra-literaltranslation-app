@@ -2,13 +2,6 @@
 
 <% client = OpenAI::Client.new(access_token: ENV.fetch("OPEN_AI_KEY"))
 
-message_list_literal = [
-  {
-    "role" => "system",
-    "content" => "You are a special translation tool. Your purpose is to restructure an English phrase using Japanese grammar and expressions, but continuing to use English words. Do not use any Japanese characters in your response. Do not reply with any additional comments or information beyond the literal translation."
-  },
-]
-
 message_list_normal = [
   {
     "role" => "system",
@@ -16,33 +9,26 @@ message_list_normal = [
   },
 ]
 
+message_list_literal = [
+  {
+    "role" => "system",
+    "content" => "You are a special translation tool. Your purpose is to translate Japanese into its word-for-word literal English meaning. Keep the Japanese grammar and sentence structure, only translate each individual word into its English counterpart. Include any topic or object marking particles such as 'は, が, を, か' and translate those particles into their romaji pronunciation. Translate 'です' into the appropriate 'to be' verbs, such as 'is / am / are'. Do not include any additional comments or assistance beyond the literal translation."
+  },
+]
+
 message_list_no_kanji = [
   {
     "role" => "system",
-    "content" => "You are an English-to-Japanese translation tool that only uses Hiragana and Katakana. Do not use any Kanji in the translation. Do not include any additional comments, restate the user input, or give advice beyond the Japanese translation in your response."
+    "content" => "You are a special translation tool. Your purpose is to convert this Japanese sentence into only Hiragana and or Katakana. Do not include any Kanji in your output. Do not include any additional comments or assistance beyond the converted sentence."
   },
 ]
 
 message_list_english_alpha = [
   {
     "role" => "system",
-    "content" => "You are an English-to-Japanese translation tool that exclusively uses romaji for your output. Do not use any Japanese characters in the translation; spell each Japanese word only using the latin alphabet. Do not include any additional comments, restate the user input, or give advice beyond the translation in your response."
+    "content" => "You are a special translation tool. Your purpose is to convert this Japanese sentence into its Romaji pronunciation. Do not include any additional comments or assistance beyond the converted sentence."
   },
 ]
-
-case @input_trans 
-when "" then "Nothing"
-else
-  message_list_literal << { "role" => "user", "content" => @input_trans }
-  api_response = client.chat(
-      parameters: {
-        model: "gpt-3.5-turbo",
-        temperature: 0.5,
-        messages: message_list_literal
-      }
-    )
-  @output_trans = api_response.fetch("choices").at(0).fetch("message").fetch("content")
-end 
 
 case @input_trans 
 when "" then "Nothing"
@@ -61,7 +47,21 @@ end
 case @input_trans 
 when "" then "Nothing"
 else
-  message_list_no_kanji << { "role" => "user", "content" => @input_trans }
+  message_list_literal << { "role" => "user", "content" => @kanji_output }
+  api_response = client.chat(
+      parameters: {
+        model: "gpt-4",
+        temperature: 0.5,
+        messages: message_list_literal
+      }
+    )
+  @output_trans = api_response.fetch("choices").at(0).fetch("message").fetch("content")
+end 
+
+case @input_trans 
+when "" then "Nothing"
+else
+  message_list_no_kanji << { "role" => "user", "content" => @kanji_output }
   api_response = client.chat(
       parameters: {
         model: "gpt-3.5-turbo",
@@ -75,7 +75,7 @@ end
 case @input_trans 
 when "" then "Nothing"
 else
-  message_list_english_alpha << { "role" => "user", "content" => @input_trans }
+  message_list_english_alpha << { "role" => "user", "content" => @kanji_output }
   api_response = client.chat(
       parameters: {
         model: "gpt-3.5-turbo",
