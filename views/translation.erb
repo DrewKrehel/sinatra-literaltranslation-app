@@ -1,5 +1,3 @@
-<h1>Japanese grammar... but in English</h1>
-
 <% client = OpenAI::Client.new(access_token: ENV.fetch("OPEN_AI_KEY"))
 
 message_list_normal = [
@@ -88,43 +86,59 @@ end
 
 %>
 
+<div class="main-container">
+  <div class="image-row">
+    <img class="profile-image" src="images/app_logo_01.png" alt="App_logo">
+  </div> <!-- /image-row -->
 
+  <div class="name-row">
+    I hope it worked!  
+  </div> <!-- /name-row -->
+    
+  <div class="explanation">
+    <p><a href="/">Go back home.</a></p>
 
-<dl>
-  <dt>
-    <strong>Your sentance:</strong>
-  </dt>
-  <dd>
-    <%= @input_trans %>
-  </dd>
+  </div> <!-- /explanation -->
 
-  <dt>
-    <strong>Normal translation</strong>
-  </dt>
-  <dd>
-    <%= @kanji_output %>
-  </dd>
+  <div class="form-box">
+    <dl>
+      <dt>
+        <strong>Your sentance:</strong>
+      </dt>
+      <dd>
+        <%= @input_trans %>
+      </dd>
 
-  <dt>
-    <strong>Only Japanese phonetic characters</strong>
-  </dt>
-  <dd>
-    <%= @phonetic_output %>
-  </dd>
+      <dt>
+        <strong>Normal translation</strong>
+      </dt>
+      <dd>
+        <%= @kanji_output %>
+      </dd>
 
-  <dt>
-    <strong>Only English phonetic characters</strong>
-  </dt>
-  <dd>
-    <%= @eng_alpha_output %>
-  </dd>
+      <dt>
+        <strong>Only Japanese phonetic characters</strong>
+      </dt>
+      <dd>
+        <%= @phonetic_output %>
+      </dd>
 
-  <dt>
-    <strong>The 'Literal' English Translation</strong>
-  </dt>
-  <dd>
-    <%= @output_trans %>
-  </dd>
-</dl>
+      <dt>
+        <strong>Only English phonetic characters</strong>
+      </dt>
+      <dd>
+        <%= @eng_alpha_output %>
+      </dd>
 
-<p><a href="/">Go back home.</a></p>
+      <dt>
+        <strong>The 'Literal' English Translation</strong>
+      </dt>
+      <dd>
+        <%= @output_trans %>
+      </dd>
+    </dl>
+
+  </div> <!-- /form-box -->
+
+</div> <!-- /main-container -->
+

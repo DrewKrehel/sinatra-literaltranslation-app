@@ -5,12 +5,11 @@ require "openai"
 require "dotenv/load"
 
 get("/") do
-  erb(:home)
+  erb(:test_home)
 end
 
 get("/translation") do
   @input_trans = params.fetch("input")
-  @num_sides = params.fetch("sides")
 
   erb(:translation)
 end
