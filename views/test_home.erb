@@ -1,0 +1,133 @@
+<head>
+    <title>home page</title>
+    <link href="" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"></script>
+
+
+    <style>
+      html {
+        min-height: 100%;
+
+      }
+      /*
+      * {
+        border: 1px red dashed
+      }
+      */
+      body {
+        min-height: 100%;
+        padding: 40px 0px;
+        background: linear-gradient(150deg, #003f5b, #07405e, #2b426f, #743d91, #df3f7a, #ff7741, #ff951c, #ff9913); /* made at https://learnui.design/tools/gradient-generator.html */
+        color: white;
+        font-family: merriweather;
+      }
+
+      a {
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+      }
+
+      .link-item {
+        background-color: rgba(149, 123, 173, 0.5);
+        border-radius: 1000px;
+        padding: 5px;
+        padding-right: 53px;
+        box-shadow: #07405e 4px 4px 10px 0px;
+      }
+
+      .profile-image {
+        width: 128px;
+        height: 128px;
+        object-fit: cover;
+        border-radius: 128px;
+      }
+
+      .thumbnail {
+        width: 48px;
+        height: 48px;
+        border-radius: 48px;
+        object-fit: cover;
+        padding: 4px;
+      }
+
+      .thumbnail_alt1 {
+        width: 48px;
+        height: 48px;
+        object-fit: scale-down;
+        padding: 4px;
+      }
+
+      .main-container {
+        max-width: 640px;
+        margin: auto;
+      }
+
+      .image-row {
+        margin: 0 0 30px;
+        text-align: center;
+      }
+
+      .name-row {
+        margin: 0 0 30px 0;
+        text-align: center;
+        font-family: work sans;
+        font-size: 24px;
+        font-weight: 900;
+      }
+
+      .explanation {
+        margin: 0 0 30px 0;
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .link-item {
+        margin: 0 0 30px 0;
+        display: flex;
+        align-items: center;
+      }
+
+      .link-text {
+        text-align: center;
+        flex-grow: 1;
+      }
+    </style>
+
+</head>
+  
+<body>
+  <div class="main-container">
+    <div class="image-row">
+      <img class="profile-image" src="images/app_logo_01.png" alt="App_logo">
+    </div> <!-- /image-row -->
+
+    <div class="name-row">
+      This wa what o meaning do is ka? Literally! 
+    </div> <!-- /name-row -->
+      
+    <div class="explanation">
+      <p>This tool is used to showcase the different levels of translation possible between the Japanese and English language. Including the 'Literal' translation of the query is meant to highlight the difference in grammar and line up the english words with their Japanese counterparts.</p>
+
+    </div> <!-- /explanation -->
+
+    <div class="form-box">
+      <form action="/translation">
+        <label for="input_id">Input Sentance</label>
+        <input id="input_id" name="input">
+
+        <label for="sides_id">How many sides per die? </label>
+        <input id="sides_id" name="sides">
+        
+        <button>Submit!</button>
+      </form>
+
+    </div> <!-- /form-box -->
+
+  </div> <!-- /main-container -->
+    
+</body>

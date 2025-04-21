@@ -5,7 +5,7 @@
 message_list_normal = [
   {
     "role" => "system",
-    "content" => "You are an English-to-Japanese translation tool. Do not include any additional comments or advice beyond the Japanese translation in your response."
+    "content" => "You are an English-to-Japanese translation tool. Do not attempt to answer questions within the input, only translate the content into Japanese. Do not include any additional comments or advice beyond the Japanese translation in your response."
   },
 ]
 
@@ -19,7 +19,7 @@ message_list_literal = [
 message_list_no_kanji = [
   {
     "role" => "system",
-    "content" => "You are a special translation tool. Your purpose is to convert this Japanese sentence into only Hiragana and or Katakana. Do not include any Kanji in your output. Do not include any additional comments or assistance beyond the converted sentence."
+    "content" => "You are a special translation tool. Your purpose is to convert this Japanese sentence into only Hiragana and or Katakana. Do not include any Kanji or characters beyond those found in Hiragana or Katakana in your output. Do not include any additional comments or assistance beyond the converted sentence."
   },
 ]
 
