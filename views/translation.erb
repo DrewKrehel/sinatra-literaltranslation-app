@@ -87,8 +87,9 @@ end
 %>
 
 <div class="main-container">
+  
   <div class="image-row">
-    <img class="profile-image" src="images/app_logo_01.png" alt="App_logo">
+    <img class="profile-image" src="images/ChatGPT Image Apr 21, 2025, 02_47_07 PM.png" alt="App_logo">
   </div> <!-- /image-row -->
 
   <div class="name-row">
@@ -96,49 +97,64 @@ end
   </div> <!-- /name-row -->
     
   <div class="explanation">
-    <p><a href="/">Go back home.</a></p>
-
+    <a href="/">Go back home.</a>
   </div> <!-- /explanation -->
 
-  <div class="form-box">
-    <dl>
-      <dt>
-        <strong>Your sentance:</strong>
-      </dt>
-      <dd>
-        <%= @input_trans %>
-      </dd>
+  <div class="link-row">
+    <div class="form-box">
+      <dl class="link-text">
+        <dt>
+          <strong>Your Sentence:</strong>
+        </dt>
+        <dd>
+          <%= @input_trans %>
+        </dd>
+      </dl>
+    </div> <!-- /Your Sentence -->
+    
+    <div class="form-box">
+      <dl class="link-text">
+        <dt>
+          <strong>Normal Translation</strong>
+        </dt>
+        <dd>
+          <%= @kanji_output %>
+        </dd>
+      </dl>
+    </div> <!-- /Normal Translation -->
 
-      <dt>
-        <strong>Normal translation</strong>
-      </dt>
-      <dd>
-        <%= @kanji_output %>
-      </dd>
+    <div class="form-box">
+      <dl class="link-text">
+        <dt>
+          <strong>Only Hiragana or Katakana</strong>
+        </dt>
+        <dd>
+          <%= @phonetic_output %>
+        </dd>
+      </dl>
+    </div> <!-- /Hiragana Only -->
 
-      <dt>
-        <strong>Only Japanese phonetic characters</strong>
-      </dt>
-      <dd>
-        <%= @phonetic_output %>
-      </dd>
+    <div class="form-box">
+      <dl class="link-text">
+        <dt>
+          <strong>Only 'Romaji'</strong>
+        </dt>
+        <dd>
+          <%= @eng_alpha_output %>
+        </dd>
+      </dl>
+    </div> <!-- /Romaji -->
 
-      <dt>
-        <strong>Only English phonetic characters</strong>
-      </dt>
-      <dd>
-        <%= @eng_alpha_output %>
-      </dd>
-
-      <dt>
-        <strong>The 'Literal' English Translation</strong>
-      </dt>
-      <dd>
-        <%= @output_trans %>
-      </dd>
-    </dl>
-
-  </div> <!-- /form-box -->
+    <div class="form-box">
+      <dl class="link-text">
+        <dt>
+          <strong>The 'Literal' English Translation</strong>
+        </dt>
+        <dd>
+          <%= @output_trans %>
+        </dd>
+      </dl>
+    </div> <!-- /Literal Translation -->
+  </div> <!-- /link-row -->
 
 </div> <!-- /main-container -->
-
