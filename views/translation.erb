@@ -19,14 +19,14 @@ message_list_normal = [
 message_list_no_kanji = [
   {
     "role" => "system",
-    "content" => "You are an English-to-Japanese translation tool. Do not use any Kanji in the translation, only Hiragana and Katakana. Do not include any additional comments, restate the user input, or give advice beyond the Japanese translation in your response."
+    "content" => "You are an English-to-Japanese translation tool that only uses Hiragana and Katakana. Do not use any Kanji in the translation. Do not include any additional comments, restate the user input, or give advice beyond the Japanese translation in your response."
   },
 ]
 
 message_list_english_alpha = [
   {
     "role" => "system",
-    "content" => "You are an English-to-Japanese translation tool. Do not use any Japanese characters in the translation; spell each Japanese word only using the English alphabet. Do not include any additional comments, restate the user input, or give advice beyond the translation in your response."
+    "content" => "You are an English-to-Japanese translation tool that exclusively uses romaji for your output. Do not use any Japanese characters in the translation; spell each Japanese word only using the latin alphabet. Do not include any additional comments, restate the user input, or give advice beyond the translation in your response."
   },
 ]
 
