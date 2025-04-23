@@ -5,7 +5,7 @@ require "openai"
 require "dotenv/load"
 
 get("/") do
-  erb(:test_home)
+  erb(:home)
 end
 
 get("/translation") do
