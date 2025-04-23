@@ -1,6 +1,5 @@
 require "sinatra"
 require "sinatra/reloader"
-require "better_errors"
 require "openai"
 require "dotenv/load"
 
