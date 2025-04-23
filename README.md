@@ -1,18 +1,7 @@
-# sinatra-template
+# English with Japanese Grammar Translation App
 
-Use this repository to create new Sinatra apps. 
+A web app that uses the OpenAI API to translate a given body of English text into various levels of Japanese language, including the 'literal' word-to-word translation that tries to keep English with Japanese grammar. 
 
-Optionally, to use `ActiveRecord` for database operations, add to the `app.rb`:
+## Usage
+Run 'ruby app.rb' in the terminal
 
-```ruby
-require "sinatra/activerecord"
-```
-
-And in the `config/environment.rb` file add this code block:
-
-```ruby
-configure do
-  # setup a database connection
-  set(:database, { adapter: "sqlite3", database: "db/development.sqlite3" })
-end
-```
